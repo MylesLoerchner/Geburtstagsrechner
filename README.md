@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Geburtstags-Rechner</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #5865f2;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4752c4;
+        }
+
+        #ergebnis {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>🎂 Geburtstags-Rechner</h1>
+
+        <p>Gib dein Geburtsdatum ein:</p>
+
+        <input type="date" id="datum">
+
+        <br>
+
+        <button onclick="berechnen()">Berechnen</button>
+
+        <div id="ergebnis"></div>
+
+    </div>
+
+    <script>
+        function berechnen() {
+
+            const eingabe = document.getElementById("datum").value;
+
+            if (eingabe === "") {
+                document.getElementById("ergebnis").innerText =
+                    "Bitte gib ein Datum ein!";
+                return;
+            }
+
+            const datum = new Date(eingabe + "T12:00:00");
+
+            const tage = [
+                "Sonntag",
+                "Montag",
+                "Dienstag",
+                "Mittwoch",
+                "Donnerstag",
+                "Freitag",
+                "Samstag"
+            ];
+
+            const wochentag = tage[datum.getDay()];
+
+            document.getElementById("ergebnis").innerText =
+                "Du wurdest an einem " + wochentag + " geboren! 🎉";
+        }
+    </script>
+
+</body>
+</html>
